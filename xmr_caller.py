@@ -20,4 +20,8 @@ message = 'Current Monero price\n' + '1 XMR:  ' +\
 			'BTC $ ' + str(btc_exchange) + '\n\n' +\
 			'Market Capitalization\n$ ' + '{:.2f}'.format(market_cap) + ' M\n' +\
 			'$XMR #XMR #Monero #Cryptocurrency'
-print(message)
+with open('test_file', "w") as test:
+	test.write(message)
+#print(message)
+#api = Tapi("apikey", "apikey-secret", "token", "token-secret")
+#api.update(message)
