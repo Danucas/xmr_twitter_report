@@ -5,6 +5,7 @@ if [ $# -lt 4 ];then
 	echo "Usage ./setup <consumer-key> <consumer-secret> <token> <token-secret>"
 else
 	mkdir $HOME/keys
+	rm -rf $HOME/keys/sec_twitter_keys
 	echo "CONS_KEY="$1 >> $HOME/keys/sec_twitter_keys
 	echo "CONS_SEC="$2 >> $HOME/keys/sec_twitter_keys
 	echo "TOKE_KEY="$3 >> $HOME/keys/sec_twitter_keys
