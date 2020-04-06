@@ -8,6 +8,7 @@ and sends a Twitter alert with the monero state updates
 from twitter_api import Tapi
 import requests
 import json
+import os
 
 
 response = requests.get("https://api.coingecko.com/api/v3/coins/monero")
@@ -22,6 +23,13 @@ message = 'Current Monero price\n' + '1 XMR:  ' +\
 			'$XMR #XMR #Monero #Cryptocurrency'
 with open('test_file', "w") as test:
 	test.write(message)
-#print(message)
-#api = Tapi("apikey", "apikey-secret", "token", "token-secret")
-#api.update(message)
+
+with open(os.getenv("HOME") + "/keys/sec_twitter_keys", "r") as keys:
+	keys = keys.read()
+keys = keys.split('\n')[:-1]
+
+api = Tapi(keys[0].split("=")[1], 
+			keys[1].split("=")[1], 
+			keys[2].split("=")[1], 
+			keys[3].split("=")[1])
+api.update(message)
